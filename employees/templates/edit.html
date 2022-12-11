@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  </head>
+<body>
+
+<h2>Modifier employé(e)</h2>
+<div class="container">
+<form method="post" action="/update/">
+    {% csrf_token %}
+    <input type="hidden" name ="id" value="{{emp_edit.id}}"><br>
+  <label for="Nom">Nom complet :</label><br>
+ <input type="text" name ="nom" value="{{emp_edit.nom}}"><br>
+  <label for="E-mail">E-mail :</label><br>
+  <input type="email" name ="email" value="{{emp_edit.email}}"><br><br>
+  <label for="Service">Service :</label><br>
+  <select  id="id_service" name='id_service'>
+    {% for service in services %}
+        <option value='{{service.id_service}}'>{{ service.service }}</option>
+    {% endfor %}
+</select><br><br>
+  <input type="submit" value="Modifier" class="btn btn-success">
+</form> 
+</div>
+</body>
+</html>
